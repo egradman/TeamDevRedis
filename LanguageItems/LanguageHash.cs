@@ -45,6 +45,12 @@ namespace TeamDev.Redis.LanguageItems
       return _provider.ReadInt(_provider.SendCommand(RedisCommand.HSET, _name, field, value)) == 1;
     }
 
+    [Description(CommandDescriptions.HINCRBY)]
+    public int Increment(string field, int value)
+    {      
+      return _provider.ReadInt(_provider.SendCommand(RedisCommand.HINCRBY, _name, field, ""+value));
+    }
+
     [Description(CommandDescriptions.HGETALL)]
     public KeyValuePair<string, string>[] Items
     {
